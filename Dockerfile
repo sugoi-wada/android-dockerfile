@@ -11,7 +11,7 @@ ENV ANDROID_HOME /usr/local/android-sdk-linux
 # Download and unzip Android SDK
 
 RUN cd /usr/local && \
-    wget -q https://dl.google.com/android/repository/tools_r25.2.5-linux.zip -O android-sdk.zip && \
+    wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O android-sdk.zip && \
     unzip android-sdk.zip -d android-sdk-linux && \
     rm -f android-sdk.zip
 
@@ -25,6 +25,7 @@ RUN echo y | sdkmanager --update && \
     echo y | sdkmanager "extras;google;m2repository" && \
     echo y | sdkmanager "extras;google;google_play_services" && \
     echo y | sdkmanager "build-tools;25.0.2" && \
+    echo y | sdkmanager "build-tools;25.0.3" && \
     echo y | sdkmanager "platforms;android-24" && \
     echo y | sdkmanager "platforms;android-25" && \
     echo y | sdkmanager "add-ons;addon-google_apis-google-24"
