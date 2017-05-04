@@ -2,9 +2,9 @@ FROM ubuntu:16.04
 
 MAINTAINER Hikaru Wada
 
-# Install Java8, curl, wget, unzip
+# Install Java8, curl, wget, unzip, git
 RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk curl wget unzip
+    apt-get install -y openjdk-8-jdk curl wget unzip git
 
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 
