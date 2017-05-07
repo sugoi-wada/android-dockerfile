@@ -2,9 +2,15 @@ FROM ubuntu:16.04
 
 MAINTAINER Hikaru Wada
 
-# Install Java8, curl, wget, unzip, git
+# Install Utilities
 RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk curl wget unzip git
+    apt-get install -y openjdk-8-jdk curl wget unzip git locales
+
+# Locale settings
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
 
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 
