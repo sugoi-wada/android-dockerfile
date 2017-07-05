@@ -30,8 +30,8 @@ RUN echo y | sdkmanager --update && \
     echo y | sdkmanager "extras;android;m2repository" && \
     echo y | sdkmanager "extras;google;m2repository" && \
     echo y | sdkmanager "extras;google;google_play_services" && \
-    echo y | sdkmanager "build-tools;25.0.2" && \
     echo y | sdkmanager "build-tools;25.0.3" && \
+    echo y | sdkmanager "build-tools;26.0.0" && \
     echo y | sdkmanager "platforms;android-24" && \
     echo y | sdkmanager "platforms;android-25" && \
     echo y | sdkmanager "add-ons;addon-google_apis-google-24"
