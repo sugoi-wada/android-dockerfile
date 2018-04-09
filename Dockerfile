@@ -1,17 +1,13 @@
-FROM ubuntu:16.04
-
+FROM ruby:2.5.1-alpine
 MAINTAINER Hikaru Wada
 
 # Install Utilities
-RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk curl wget unzip git locales
+RUN apk update && \
+    apk upgrade && \
+    apk --no-cache add \
+     openjdk8 curl wget unzip git bash make gcc musl-dev openssh-client openssl
 
-# Locale settings
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8
-
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 
 # Download and unzip Android SDK
@@ -30,14 +26,6 @@ RUN echo y | sdkmanager --update && \
     echo y | sdkmanager "extras;android;m2repository" && \
     echo y | sdkmanager "extras;google;m2repository" && \
     echo y | sdkmanager "extras;google;google_play_services" && \
-    echo y | sdkmanager "build-tools;25.0.3" && \
-    echo y | sdkmanager "build-tools;26.0.0" && \
-    echo y | sdkmanager "platforms;android-24" && \
-    echo y | sdkmanager "platforms;android-25" && \
-    echo y | sdkmanager "add-ons;addon-google_apis-google-24"
+    echo y | sdkmanager "platforms;android-26" && \
+    echo y | sdkmanager "platforms;android-27"
 
-# clean 
-
-RUN apt-get autoremove -y && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /pd_build
